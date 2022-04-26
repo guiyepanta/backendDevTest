@@ -27,7 +27,6 @@ public class ProductSimilarClient {
 	String url = env.getProperty("api.product.similars.url");
 	final String path = String.format(RECURSO_PRODUCT_SIMILAR, url, productId);
 
-	// RestTemplate plantilla = new RestTemplate();
 	try {
 	    ResponseEntity<String[]> response = restTemplate.getForEntity(path, String[].class);
 
@@ -43,8 +42,7 @@ public class ProductSimilarClient {
 	String url = env.getProperty("api.product.similars.url");
 	final String path = String.format(RECURSO_PRODUCT_DETAIL, url, productId);
 
-	RestTemplate plantilla = new RestTemplate();
-	ProductDTO result = plantilla.getForObject(path, ProductDTO.class);
+	ProductDTO result = restTemplate.getForObject(path, ProductDTO.class);
 	log.info("Successfully retrieved product detail from api-mock");
 	return result;
     }

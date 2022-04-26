@@ -63,8 +63,7 @@ public class ProductSimilarClientTest {
 
 	// WHEN
 	when(this.env.getProperty("api.product.similars.url")).thenReturn("http://service-mock");
-	when(restTemplate.getForEntity("http://service-mock/product/1", ProductDTO.class))
-		.thenReturn(new ResponseEntity<ProductDTO>(productoMock, HttpStatus.OK));
+	when(restTemplate.getForObject("http://service-mock/product/1", ProductDTO.class)).thenReturn(productoMock);
 
 	// THEN
 	ProductDTO resultado;
